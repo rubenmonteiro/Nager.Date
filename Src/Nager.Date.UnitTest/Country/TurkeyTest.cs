@@ -29,7 +29,6 @@ namespace Nager.Date.UnitTest.Country
 
             //Republic Day
             Assert.AreEqual(new DateTime(2017, 10, 29), publicHolidays[5].Date);
-
         }
     }
 }

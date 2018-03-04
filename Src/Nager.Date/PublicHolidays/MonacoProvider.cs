@@ -8,7 +8,6 @@ namespace Nager.Date.PublicHolidays
 {
     public class MonacoProvider : CatholicBaseProvider
     {
-        public override DayOfWeek FirstDayOfWeek => DayOfWeek.Monday;
         public override IEnumerable<PublicHoliday> Get(int year)
         {
             //Monaco
@@ -33,28 +32,28 @@ namespace Nager.Date.PublicHolidays
             var newYearsDay = new DateTime(year, 1, 1).Shift(saturday => saturday, sunday => sunday.AddDays(1));
             items.Add(new PublicHoliday(newYearsDay, "Le jour de l’An", "New Year's Day", countryCode));
 
-            #endregion
+            #endregion New Year's Day
 
             #region All Saints Day
 
             var allSaintsDay = new DateTime(year, 11, 1).Shift(saturday => saturday, sunday => sunday.AddDays(1));
             items.Add(new PublicHoliday(allSaintsDay, "La Toussaint", "All Saints Day", countryCode));
 
-            #endregion
+            #endregion All Saints Day
 
             #region National Day / La Fête du Prince
 
             var nationalDay = new DateTime(year, 11, 19).Shift(saturday => saturday, sunday => sunday.AddDays(1));
             items.Add(new PublicHoliday(nationalDay, "La Fête du Prince", "National Day", countryCode));
 
-            #endregion
+            #endregion National Day / La Fête du Prince
 
             #region Christmas Day
 
             var christmasDay = new DateTime(year, 12, 25).Shift(saturday => saturday, sunday => sunday.AddDays(1));
             items.Add(new PublicHoliday(christmasDay, "Noël​", "​Christmas Day", countryCode));
 
-            #endregion
+            #endregion Christmas Day
 
             return items.OrderBy(o => o.Date);
         }

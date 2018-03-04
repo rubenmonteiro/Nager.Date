@@ -10,6 +10,7 @@ namespace Nager.Date.PublicHolidays
     public class ChinaProvider : ICountryCalendarProvider
     {
         public DayOfWeek FirstDayOfWeek => DayOfWeek.Monday;
+
         public IEnumerable<PublicHoliday> Get(int year)
         {
             //TODO: Provider incomplete

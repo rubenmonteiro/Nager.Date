@@ -2,6 +2,7 @@
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(Nager.Date.Website.Startup))]
+
 namespace Nager.Date.Website
 {
     public partial class Startup

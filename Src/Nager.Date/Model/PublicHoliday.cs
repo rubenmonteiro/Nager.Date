@@ -7,14 +7,18 @@ namespace Nager.Date.Model
         public DateTime Date { get; set; }
         public string LocalName { get; set; }
         public string Name { get; set; }
+
         //ISO 3166-1 alpha-2
         public CountryCode CountryCode { get; set; }
+
         public bool Fixed { get; set; }
         public bool CountyOfficialHoliday { get; set; }
         public bool CountyAdministrationHoliday { get; set; }
         public bool Global { get { return this.Counties?.Length > 0 ? false : true; } }
+
         //ISO-3166-2
         public string[] Counties { get; set; }
+
         public PublicHolidayType Type { get; set; }
         public int? LaunchYear { get; set; }
 

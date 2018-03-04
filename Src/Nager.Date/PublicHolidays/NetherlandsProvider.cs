@@ -7,7 +7,6 @@ namespace Nager.Date.PublicHolidays
 {
     public class NetherlandsProvider : CatholicBaseProvider
     {
-        public override DayOfWeek FirstDayOfWeek => DayOfWeek.Monday;
         public override IEnumerable<PublicHoliday> Get(int year)
         {
             //Netherlands
@@ -25,7 +24,7 @@ namespace Nager.Date.PublicHolidays
                 kingsDay = 26;
             }
 
-            #endregion
+            #endregion King's Day is Sunday fallback
 
             var items = new List<PublicHoliday>();
             items.Add(new PublicHoliday(year, 1, 1, "Nieuwjaarsdag", "New Year's Day", countryCode, 1967));
@@ -55,7 +54,7 @@ namespace Nager.Date.PublicHolidays
                 }
             }
 
-            #endregion
+            #endregion Liberation Day
 
             return items.OrderBy(o => o.Date);
         }

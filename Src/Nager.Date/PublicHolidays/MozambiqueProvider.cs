@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Nager.Date.Contract;
+﻿using Nager.Date.Contract;
 using Nager.Date.Model;
+using System.Collections.Generic;
 
 namespace Nager.Date.PublicHolidays
 {

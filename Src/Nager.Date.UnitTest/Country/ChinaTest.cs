@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Nager.Date.UnitTest.Country
 {
@@ -36,7 +36,7 @@ namespace Nager.Date.UnitTest.Country
         public void TestChina2017()
         {
             var publicHolidays = DateSystem.GetPublicHoliday(CountryCode.CN, 2017).ToArray();
-            var test1 = publicHolidays.Where(o=>o.Date == new DateTime(2017, 10, 4) && o.Name == "Mid-Autumn Festival").Any();
+            var test1 = publicHolidays.Where(o => o.Date == new DateTime(2017, 10, 4) && o.Name == "Mid-Autumn Festival").Any();
             var test2 = publicHolidays.Where(o => o.Date == new DateTime(2017, 4, 4) && o.Name == "Qingming Festival (Tomb-Sweeping Day)").Any();
 
             //Set to warning till china provider is fixed

@@ -11,6 +11,7 @@ namespace Nager.Date
     public static class DateSystem
     {
         private static Dictionary<CountryCode, ICountryCalendarProvider> _countries;
+
         /// <summary>
         /// List of available countries
         /// </summary>
@@ -18,9 +19,10 @@ namespace Nager.Date
         {
             get
             {
-                if(_countries == null)
+                if (_countries == null)
                 {
                     #region Countries Init
+
                     _countries = new Dictionary<CountryCode, ICountryCalendarProvider>();
                     _countries.Add(CountryCode.AD, new AndorraProvider());
                     _countries.Add(CountryCode.AR, new ArgentinaProvider());
@@ -98,7 +100,8 @@ namespace Nager.Date
                     _countries.Add(CountryCode.US, new UnitedStatesProvider());
                     _countries.Add(CountryCode.UY, new UruguayProvider());
                     _countries.Add(CountryCode.ZA, new SouthAfricaProvider());
-                    #endregion
+
+                    #endregion Countries Init
                 }
 
                 return _countries;
@@ -141,7 +144,7 @@ namespace Nager.Date
             return provider?.Get(year);
         }
 
-        #endregion
+        #endregion Public Holidays for a given year
 
         #region Public Holidays for a date range
 
@@ -180,7 +183,7 @@ namespace Nager.Date
             }
         }
 
-        #endregion
+        #endregion Public Holidays for a date range
 
         #region Check a date is a Public Holiday
 
@@ -202,7 +205,7 @@ namespace Nager.Date
             return items.Any(o => o.Date.Date == date.Date && (o.Counties == null || o.Counties.Contains(countyCode)) && o.CountyAdministrationHoliday);
         }
 
-        #endregion
+        #endregion Check a date is a Public Holiday
 
         #region Day Finding
 
@@ -260,7 +263,7 @@ namespace Nager.Date
         {
             var calculationDay = new DateTime(year, month, day);
             var countryCalendar = GetProvider(countryCode);
-            if(countryCalendar != null)
+            if (countryCalendar != null)
             {
                 var firstDayOfWeek = countryCalendar.FirstDayOfWeek;
 
@@ -307,7 +310,7 @@ namespace Nager.Date
         /// <returns></returns>
         public static DateTime? FindNextWorkingDayAfterDate(int year, int month, int day, CountryCode countryCode)
         {
-            var startDate = new DateTime(year,month,day);
+            var startDate = new DateTime(year, month, day);
             var flag = false;
 
             while (!flag)
@@ -325,7 +328,6 @@ namespace Nager.Date
                 if (!IsPublicHoliday(startDate, countryCode) && !startDate.IsWeekend(countryCode))
                     flag = true;
             }
-
 
             return startDate;
         }
@@ -435,7 +437,7 @@ namespace Nager.Date
             return new DateTime(year, month, resultedDay);
         }
 
-        #endregion
+        #endregion Day Finding
 
         #region Birthday
 
@@ -448,7 +450,7 @@ namespace Nager.Date
             return age;
         }
 
-        #endregion
+        #endregion Birthday
 
         #region Long Weekends
 
@@ -471,18 +473,21 @@ namespace Nager.Date
                         item.EndDate = publicHoliday.Date.AddDays(3);
                         item.Bridge = true;
                         break;
+
                     case DayOfWeek.Friday:
                         item = new LongWeekend();
                         item.StartDate = publicHoliday.Date;
                         item.EndDate = publicHoliday.Date.AddDays(2);
                         item.Bridge = false;
                         break;
+
                     case DayOfWeek.Monday:
                         item = new LongWeekend();
                         item.StartDate = publicHoliday.Date.AddDays(-2);
                         item.EndDate = publicHoliday.Date;
                         item.Bridge = false;
                         break;
+
                     case DayOfWeek.Tuesday:
                         item = new LongWeekend();
                         item.StartDate = publicHoliday.Date.AddDays(-3);
@@ -510,6 +515,6 @@ namespace Nager.Date
             return items;
         }
 
-        #endregion
+        #endregion Long Weekends
     }
 }

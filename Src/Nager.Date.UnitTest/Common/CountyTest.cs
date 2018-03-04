@@ -1,7 +1,7 @@
-﻿using System;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Nager.Date.Contract;
+using System;
+using System.Linq;
 
 namespace Nager.Date.UnitTest.Common
 {

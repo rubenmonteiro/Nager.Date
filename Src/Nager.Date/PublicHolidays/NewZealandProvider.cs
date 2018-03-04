@@ -8,7 +8,6 @@ namespace Nager.Date.PublicHolidays
 {
     public class NewZealandProvider : CatholicBaseProvider
     {
-        public override DayOfWeek FirstDayOfWeek => DayOfWeek.Monday;
         public override IEnumerable<PublicHoliday> Get(int year)
         {
             //New Zealand
@@ -30,7 +29,7 @@ namespace Nager.Date.PublicHolidays
             var newYearDay2 = new DateTime(year, 1, 2).Shift(saturday => saturday.AddDays(2), sunday => sunday.AddDays(2));
             items.Add(new PublicHoliday(newYearDay2, "Day after New Year's Day", "Day after New Year's Day", countryCode));
 
-            #endregion
+            #endregion New Year's Day with fallback
 
             #region Anzac Day with fallback
 
@@ -44,7 +43,7 @@ namespace Nager.Date.PublicHolidays
                 items.Add(new PublicHoliday(year, 4, 25, "Anzac Day", "Anzac Day", countryCode));
             }
 
-            #endregion
+            #endregion Anzac Day with fallback
 
             #region Anzac Day with fallback
 
@@ -58,21 +57,21 @@ namespace Nager.Date.PublicHolidays
                 items.Add(new PublicHoliday(year, 2, 6, "Waitangi Day", "Waitangi Day", countryCode));
             }
 
-            #endregion
+            #endregion Anzac Day with fallback
 
             #region Christmas Day with fallback
 
             var christmasDay = new DateTime(year, 12, 25).Shift(saturday => saturday.AddDays(2), sunday => sunday.AddDays(1));
             items.Add(new PublicHoliday(christmasDay, "Christmas Day", "Christmas Day", countryCode));
 
-            #endregion
+            #endregion Christmas Day with fallback
 
             #region Boxing Day with fallback
 
             var boxingDay = new DateTime(year, 12, 26).Shift(saturday => saturday.AddDays(2), sunday => sunday.AddDays(2));
             items.Add(new PublicHoliday(boxingDay, "Boxing Day", "Boxing Day", countryCode));
 
-            #endregion
+            #endregion Boxing Day with fallback
 
             items.Add(new PublicHoliday(easterSunday.AddDays(-2), "Good Friday", "Good Friday", countryCode));
             items.Add(new PublicHoliday(easterSunday.AddDays(1), "Easter Monday", "Easter Monday", countryCode));

@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Nager.Date.Contract;
+﻿using Nager.Date.Contract;
 using Nager.Date.Extensions;
 using Nager.Date.Model;
+using System;
+using System.Collections.Generic;
 
 namespace Nager.Date.PublicHolidays
 {
-    class AngolaProvider : CatholicBaseProvider, ICountyProvider
+    internal class AngolaProvider : CatholicBaseProvider, ICountyProvider
     {
         public override IEnumerable<PublicHoliday> Get(int year)
         {

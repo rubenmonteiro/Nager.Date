@@ -7,7 +7,7 @@ namespace Nager.Date.PublicHolidays
 {
     public abstract class CatholicBaseProvider : ICountryCalendarProvider
     {
-        public abstract DayOfWeek FirstDayOfWeek { get; }
+        public virtual DayOfWeek FirstDayOfWeek => DayOfWeek.Monday;
 
         public abstract IEnumerable<PublicHoliday> Get(int year);
 

@@ -8,7 +8,6 @@ namespace Nager.Date.PublicHolidays
 {
     public class JamaicaProvider : CatholicBaseProvider
     {
-        public override DayOfWeek FirstDayOfWeek => DayOfWeek.Monday;
         public override IEnumerable<PublicHoliday> Get(int year)
         {
             //Jamaica
@@ -30,11 +29,11 @@ namespace Nager.Date.PublicHolidays
             var independenceDay = new DateTime(year, 8, 6).Shift(saturday => saturday, sunday => sunday.AddDays(1));
             items.Add(new PublicHoliday(independenceDay, "Independence Day", "Independence Day", countryCode));
 
-            #endregion
+            #endregion Independence Day
 
             items.Add(new PublicHoliday(year, 10, 16, "National Heroes Day", "National Heroes Day", countryCode));
             items.Add(new PublicHoliday(year, 12, 25, "Christmas Day", "Christmas Day", countryCode));
-            items.Add(new PublicHoliday(year, 12, 26, "Boxing Day", "St. Stephen's Day", countryCode));            
+            items.Add(new PublicHoliday(year, 12, 26, "Boxing Day", "St. Stephen's Day", countryCode));
 
             return items.OrderBy(o => o.Date);
         }

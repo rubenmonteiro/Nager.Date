@@ -21,6 +21,5 @@ namespace Nager.Date.UnitTest.Country
             var isPublicHoliday = DateSystem.IsOfficialPublicHolidayByCounty(testDate, CountryCode.GB, "GB-NIR");
             Assert.AreEqual(true, isPublicHoliday);
         }
-
     }
 }

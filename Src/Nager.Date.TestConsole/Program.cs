@@ -1,12 +1,11 @@
-﻿using System;
-using System.Linq;
-using Nager.Date.Extensions;
+﻿using Nager.Date.Extensions;
+using System;
 
 namespace Nager.Date.TestConsole
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Test1();
 

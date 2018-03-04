@@ -9,6 +9,7 @@ namespace Nager.Date.PublicHolidays
     public class TurkeyProvider : ICountryCalendarProvider
     {
         public DayOfWeek FirstDayOfWeek => DayOfWeek.Monday;
+
         public IEnumerable<PublicHoliday> Get(int year)
         {
             //Turkey

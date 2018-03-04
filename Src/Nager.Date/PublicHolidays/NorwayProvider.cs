@@ -1,5 +1,4 @@
 ﻿using Nager.Date.Model;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,7 +6,6 @@ namespace Nager.Date.PublicHolidays
 {
     public class NorwayProvider : CatholicBaseProvider
     {
-        public override DayOfWeek FirstDayOfWeek => DayOfWeek.Monday;
         public override IEnumerable<PublicHoliday> Get(int year)
         {
             //Norway
@@ -29,7 +27,6 @@ namespace Nager.Date.PublicHolidays
             items.Add(new PublicHoliday(easterSunday.AddDays(50), "Andre pinsedag", "Whit Monday", countryCode));
             items.Add(new PublicHoliday(year, 12, 25, "Første juledag", "Christmas Day", countryCode));
             items.Add(new PublicHoliday(year, 12, 26, "Andre juledag", "St. Stephen's Day", countryCode));
-
 
             return items.OrderBy(o => o.Date);
         }

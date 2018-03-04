@@ -8,7 +8,6 @@ namespace Nager.Date.PublicHolidays
 {
     public class UnitedKingdomProvider : CatholicBaseProvider
     {
-        public override DayOfWeek FirstDayOfWeek => DayOfWeek.Monday;
         public override IEnumerable<PublicHoliday> Get(int year)
         {
             //United Kingdom
@@ -42,14 +41,14 @@ namespace Nager.Date.PublicHolidays
                 items.Add(new PublicHoliday(newYearDay, "New Year's Day", "New Year's Day", countryCode));
             }
 
-            #endregion
+            #endregion New Year's Day with fallback
 
             #region New Year's Day 2 with fallback
 
             var newYearDay2 = new DateTime(year, 1, 2).Shift(saturday => saturday.AddDays(2), sunday => sunday.AddDays(1));
             items.Add(new PublicHoliday(newYearDay2, "New Year's Day", "New Year's Day", countryCode, null, new string[] { "GB-SCT" }));
 
-            #endregion
+            #endregion New Year's Day 2 with fallback
 
             items.Add(new PublicHoliday(year, 3, 17, "Saint Patrick's Day", "Saint Patrick's Day", countryCode, null, new string[] { "GB-NIR" }));
             items.Add(new PublicHoliday(easterSunday.AddDays(-2), "Good Friday", "Good Friday", countryCode));
@@ -65,14 +64,14 @@ namespace Nager.Date.PublicHolidays
             var christmasDay = new DateTime(year, 12, 25).Shift(saturday => saturday.AddDays(3), sunday => sunday.AddDays(2));
             items.Add(new PublicHoliday(christmasDay, "Christmas Day", "Christmas Day", countryCode));
 
-            #endregion
+            #endregion Christmas Day with fallback
 
             #region St. Stephen's Day with fallback
 
             var sanktStehpenDay = new DateTime(year, 12, 26).Shift(saturday => saturday.AddDays(2), sunday => sunday.AddDays(1));
             items.Add(new PublicHoliday(sanktStehpenDay, "Boxing Day", "St. Stephen's Day", countryCode));
 
-            #endregion
+            #endregion St. Stephen's Day with fallback
 
             return items.OrderBy(o => o.Date);
         }
