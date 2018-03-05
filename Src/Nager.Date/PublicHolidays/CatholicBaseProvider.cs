@@ -7,6 +7,19 @@ namespace Nager.Date.PublicHolidays
 {
     public abstract class CatholicBaseProvider : ICountryCalendarProvider
     {
+        public virtual bool IsWeekend(DateTime date)
+        {
+            //For feature weekend is different need countryCode
+            //https://en.wikipedia.org/wiki/Workweek_and_weekend
+
+            if (date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public virtual DayOfWeek FirstDayOfWeek => DayOfWeek.Monday;
 
         public abstract IEnumerable<PublicHoliday> Get(int year);

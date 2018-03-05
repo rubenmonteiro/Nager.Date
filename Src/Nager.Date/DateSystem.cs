@@ -193,6 +193,12 @@ namespace Nager.Date
             return items.Any(o => o.Date.Date == date.Date);
         }
 
+        public static bool IsWeekend(DateTime day, CountryCode countryCode)
+        {
+            var provider = GetProvider(countryCode);
+            return provider.IsWeekend(day);
+        }
+
         public static bool IsOfficialPublicHolidayByCounty(DateTime date, CountryCode countryCode, string countyCode)
         {
             var items = GetPublicHoliday(countryCode, date.Year);
@@ -249,6 +255,17 @@ namespace Nager.Date
                 var daysNeeded = (int)dayOfWeek - (int)calculationDay.DayOfWeek;
                 return calculationDay.AddDays(daysNeeded + 7);
             }
+        }
+
+        /// <summary>
+        /// Find the next weekday for example monday from a specific date
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="dayOfWeek"></param>
+        /// <returns></returns>
+        public static DateTime FindDay(DateTime date, DayOfWeek dayOfWeek)
+        {
+            return FindDay(date.Year, date.Month, date.Day, dayOfWeek);
         }
 
         /// <summary>
@@ -318,14 +335,14 @@ namespace Nager.Date
                 if (IsPublicHoliday(startDate, countryCode))
                     startDate.AddDays(1);
 
-                if (startDate.IsWeekend(countryCode))
+                if (IsWeekend(startDate, countryCode))
                 {
                     var value = FindStartOfWeekDayAfterDate(startDate.Year, startDate.Month, startDate.Day, countryCode);
                     if (value.HasValue)
                         startDate = value.Value;
                 }
 
-                if (!IsPublicHoliday(startDate, countryCode) && !startDate.IsWeekend(countryCode))
+                if (!IsPublicHoliday(startDate, countryCode) && !IsWeekend(startDate, countryCode))
                     flag = true;
             }
 
@@ -373,7 +390,8 @@ namespace Nager.Date
         /// <returns></returns>
         public static bool IsWorkingDay(DateTime day, CountryCode countryCode)
         {
-            return !IsPublicHoliday(day, countryCode) && !day.IsWeekend(countryCode);
+
+            return !IsPublicHoliday(day, countryCode) && !IsWeekend(day, countryCode);
         }
 
         /// <summary>
@@ -398,6 +416,17 @@ namespace Nager.Date
                 var daysSubtract = (int)dayOfWeek - (int)calculationDay.DayOfWeek;
                 return calculationDay.AddDays(daysSubtract - 7);
             }
+        }
+
+        /// <summary>
+        /// Find the next weekday for example monday before a specific date
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="dayOfWeek"></param>
+        /// <returns></returns>
+        public static DateTime FindDayBefore(DateTime date, DayOfWeek dayOfWeek)
+        {
+            return FindDayBefore(date.Year, date.Month, date.Day, dayOfWeek);
         }
 
         /// <summary>

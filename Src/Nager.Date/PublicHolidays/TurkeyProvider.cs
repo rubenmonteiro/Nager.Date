@@ -8,6 +8,19 @@ namespace Nager.Date.PublicHolidays
 {
     public class TurkeyProvider : ICountryCalendarProvider
     {
+        public virtual bool IsWeekend(DateTime date)
+        {
+            //For feature weekend is different need countryCode
+            //https://en.wikipedia.org/wiki/Workweek_and_weekend
+
+            if (date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public DayOfWeek FirstDayOfWeek => DayOfWeek.Monday;
 
         public IEnumerable<PublicHoliday> Get(int year)

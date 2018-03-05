@@ -1,6 +1,7 @@
 ﻿using Nager.Date.Contract;
 using Nager.Date.Model;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Nager.Date.PublicHolidays
 {
@@ -22,7 +23,7 @@ namespace Nager.Date.PublicHolidays
             items.Add(new PublicHoliday(year, 10, 4, "Dia da Paz e da Reconcialição", "Day of Peace and Reconciliation", countryCode));
             items.Add(new PublicHoliday(year, 12, 25, "Natal", "Christmas Day", countryCode));
 
-            return items;
+            return items.OrderBy(o => o.Date);
         }
 
         public IDictionary<string, string> GetCounties()
