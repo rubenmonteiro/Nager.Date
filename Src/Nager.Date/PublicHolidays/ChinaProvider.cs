@@ -45,6 +45,16 @@ namespace Nager.Date.PublicHolidays
             return items.OrderBy(o => o.Date);
         }
 
+        public bool IsWeekend(DateTime date)
+        {
+            if (date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         private int MoveMonth(int month, int leapMonth)
         {
             if (leapMonth == 0)

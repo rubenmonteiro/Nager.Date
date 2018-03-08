@@ -16,11 +16,12 @@ namespace Nager.Date.TestConsole
         {
             var date = DateTime.Today;
             var countryCode = CountryCode.US;
+            var provider = DateSystem.GetProvider(countryCode);
 
             do
             {
                 date = date.AddDays(1);
-            } while (DateSystem.IsPublicHoliday(date, countryCode) || date.IsWeekend(countryCode));
+            } while (DateSystem.IsPublicHoliday(date, countryCode) || provider.IsWeekend(date));
         }
 
         private static void Test2()

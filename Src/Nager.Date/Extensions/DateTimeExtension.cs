@@ -98,5 +98,10 @@ namespace Nager.Date.Extensions
 
             return northernEmisphere ? Seasons.Autumn : Seasons.Spring;
         }
+
+        public static DateTime FirstDayOfTheYear(this DateTime dt, int year)
+        {
+            return new DateTime(year, 1, 1);
+        }
     }
 }

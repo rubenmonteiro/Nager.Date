@@ -27,7 +27,7 @@ namespace Nager.Date.PublicHolidays
             #region New Year's Day with fallback
 
             var newYearDay = new DateTime(year, 1, 1);
-            if (newYearDay.IsWeekend(countryCode))
+            if (IsWeekend(newYearDay))
             {
                 var newYearDayMonday = DateSystem.FindDay(year, 1, 1, DayOfWeek.Monday);
                 var newYearDayTuesday = DateSystem.FindDay(year, 1, 1, DayOfWeek.Tuesday);
